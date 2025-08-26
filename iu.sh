@@ -10,9 +10,13 @@ function RD()
 	F=$( . ./s.sh | . ./r.sh )
 	echo $(( ( A * B + C ) + ( D + E + F ) ))
 }
+
+TMP=$( mktemp )
+shuf $@ > $TMP
+
 while read input
 do
-	lines=$( cat "$1" | wc -l )
+	lines=$( cat $TMP | wc -l )
 	RD=$( RD )
 	L=$(( RD % lines ))
 
@@ -20,6 +24,8 @@ do
 	[ $L -gt $lines ] && L=$(( L - lines ))
 	[ $L -lt 1 ] && L=$(( L + lines ))
 
-	head -$L $1 | tail -1
+	head -$L $TMP | tail -1
 	[ "$input" = "quit" ] && break
 done
+
+rm $TMP
