@@ -7,6 +7,7 @@ read x
 [ $x = 1842 ] && echo 5 && return
 [ $x = 1824 ] && echo 6 && return
 [ $x = 2814 ] && echo 7 && return
+[ $x = 2841 ] && echo 24 && return
 [ $x = 2148 ] && echo 8 && return
 [ $x = 2184 ] && echo 9 && return
 [ $x = 2418 ] && echo 10 && return
@@ -23,4 +24,4 @@ read x
 [ $x = 8214 ] && echo 20 && return
 [ $x = 8241 ] && echo 21 && return
 [ $x = 8124 ] && echo 22 && return
-echo 0
+echo 25
